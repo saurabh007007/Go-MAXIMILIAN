@@ -24,3 +24,7 @@ package main
 // run ./first-app  -- it runs the app without anyone to install the go
 
 // thats the reason that we require packages
+
+// main tells the go compiler that this is the main package of the application for here the code runs
+
+// only main will run as the default code
