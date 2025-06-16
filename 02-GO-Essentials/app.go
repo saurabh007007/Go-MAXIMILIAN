@@ -28,3 +28,5 @@ package main
 // main tells the go compiler that this is the main package of the application for here the code runs
 
 // only main will run as the default code
+
+// no allowed to have multiple main packages in the same project
