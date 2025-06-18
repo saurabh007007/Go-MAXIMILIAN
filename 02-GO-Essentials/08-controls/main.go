@@ -63,7 +63,8 @@ func main() {
 				fmt.Print("Enter the amount to withdraw :")
 				fmt.Scan(&amoutWithdraw)
 				fmt.Println("Balance withdrawn successfully")
-				balance = balance - float64(amoutWithdraw)
+				balance = balance - float64(amoutWithdraw)1
+
 				WriteBalanceTofile(float64(balance))
 				break
 			}
@@ -80,3 +81,5 @@ func main() {
 	}
 
 }
+
+// panic() // it is used to stop the execution of the program and print the error message
