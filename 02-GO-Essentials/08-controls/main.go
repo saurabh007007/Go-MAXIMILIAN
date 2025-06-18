@@ -1,9 +1,30 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
+const accountBalanceFile = "balance.txt"
+
+func WriteBalanceTofile(balance float64) {
+	balanceText := fmt.Sprint(balance)
+	os.WriteFile("balance.txt", []byte(balanceText), 0644) // 0644 read and write by owner otherr can read only
+}
+
+func getBalanceFromFile() float64 {
+	var balanceText string
+	var balance float64
+	data, _ := os.ReadFile(accountBalanceFile)
+	balanceText = string(data)
+	balance, _ = strconv.ParseFloat(balanceText, 64)
+	return balance
+
+}
 
 func main() {
-	var balance int = 1000
+	var balance = getBalanceFromFile()
 	for i := 0; i < 200; i++ {
 		fmt.Println("Welcome to bank ::  ")
 		fmt.Println("Please select an option:")
@@ -31,7 +52,8 @@ func main() {
 				fmt.Println("Enter the amount to add : ")
 				fmt.Scan(&amoutadd)
 				fmt.Println("Balance added successfully")
-				balance += amoutadd
+				balance += float64(amoutadd)
+				WriteBalanceTofile(float64(balance))
 				break
 			}
 
@@ -41,7 +63,8 @@ func main() {
 				fmt.Print("Enter the amount to withdraw :")
 				fmt.Scan(&amoutWithdraw)
 				fmt.Println("Balance withdrawn successfully")
-				balance = balance - amoutWithdraw
+				balance = balance - float64(amoutWithdraw)
+				WriteBalanceTofile(float64(balance))
 				break
 			}
 		case 4:
