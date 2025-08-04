@@ -3,11 +3,15 @@ package main
 import (
 	"net/http"
 
+	"http.com/com/db"
+
 	"github.com/gin-gonic/gin"
 	"http.com/com/models"
 )
 
 func main() {
+	db.InitDB()
+
 	server := gin.Default()
 	server.GET("/", func(res *gin.Context) {
 		res.JSON(http.StatusOK, gin.H{
